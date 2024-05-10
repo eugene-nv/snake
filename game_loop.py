@@ -1,8 +1,9 @@
 import pygame
+from gui import Window
 
 pygame.init()
 
-window = pygame.display.set_mode((800, 600))
+window = Window()
 
 '''Главный цикл игры'''
 
@@ -13,8 +14,8 @@ while not game_over:
         if event.type == pygame.QUIT:
             game_over = True
 
-    window.fill((255, 255, 255))
-    pygame.display.update()
+    window.background_fill()
+    window.update()
 
 pygame.quit()
 quit()
