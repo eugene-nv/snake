@@ -15,9 +15,25 @@ while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_over = True
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                snake.change_x = -10
+                snake.change_y = 0
+            elif event.key == pygame.K_RIGHT:
+                snake.change_x = 10
+                snake.change_y = 0
+            elif event.key == pygame.K_UP:
+                snake.change_y = -10
+                snake.change_x = 0
+            elif event.key == pygame.K_DOWN:
+                snake.change_y = 10
+                snake.change_x = 0
+
+    snake.x += snake.change_x
+    snake.y += snake.change_y
 
     window.background_fill()
-    snake.create()
+    snake.render()
     window.update()
 
 pygame.quit()
