@@ -6,7 +6,7 @@ class Window:
     def __init__(self):
         self.width = 800
         self.height = 600
-        self.background_color = (255, 255, 255)
+        self.background_color = (225, 222, 227)
         self.main_window = pygame.display.set_mode((self.width, self.height))
 
         pygame.display.set_caption('Snake')
