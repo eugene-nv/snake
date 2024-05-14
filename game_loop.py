@@ -8,12 +8,13 @@ pygame.init()
 
 window = Window()
 snake = Snake(window)
-control = Control()
+control = Control(snake)
 
 '''Главный цикл игры'''
 
 while not control.game_over:
     control.control(snake)
+    control.is_alive(window)
 
     window.background_fill()
     snake.render()
