@@ -28,7 +28,12 @@ class Control:
         player.x += player.change_x
         player.y += player.change_y
 
-    def is_alive(self, window):
+    def is_alive(self, window, snake):
+
+        for x in snake.list[:-1]:
+            if x == snake.head:
+                self.game_over = True
+
         if self.closed_border:
             if self.player.x >= window.width or self.player.x < 0 or self.player.y >= window.height or self.player.y < 0:
                 self.game_over = True

@@ -19,16 +19,16 @@ control = Control(snake)
 
 while not control.game_over:
     control.control(snake)
-    control.is_alive(window)
+    control.is_alive(window, snake)
 
     window.background_fill()
-    food.render()
 
+    food.render()
     snake.render()
+
     window.update()
 
-    if snake.x == food.x and snake.y == food.y:
-        print("Yummy!!")
+    snake.eat_food(food)
 
 
 pygame.quit()
