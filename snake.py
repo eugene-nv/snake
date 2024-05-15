@@ -1,10 +1,12 @@
 import pygame
 
+from gui import Window
+
 
 class Snake:
 
-    def __init__(self, window):
-        self.window = window
+    def __init__(self):
+        self.window = Window()
         self.block = 10
         self.color = (58, 79, 65)
         self.x = self.window.width / 2

@@ -17,5 +17,5 @@ class Window:
 
     @staticmethod
     def update():
-        pygame.time.Clock().tick(30)
+        pygame.time.Clock().tick(20)
         return pygame.display.update()

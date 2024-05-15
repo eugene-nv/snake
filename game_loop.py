@@ -1,14 +1,19 @@
+import random
+
 import pygame
 
 from control import Control
 from gui import Window
 from snake import Snake
+from food import Food
 
 pygame.init()
 
 window = Window()
-snake = Snake(window)
+snake = Snake()
+food = Food()
 control = Control(snake)
+
 
 '''Главный цикл игры'''
 
@@ -17,8 +22,14 @@ while not control.game_over:
     control.is_alive(window)
 
     window.background_fill()
+    food.render()
+
     snake.render()
     window.update()
+
+    if snake.x == food.x and snake.y == food.y:
+        print("Yummy!!")
+
 
 pygame.quit()
 quit()
