@@ -31,3 +31,14 @@ class Message:
         mess = cls.font_style.render(text, True, (213, 161, 142))
         cls.window.main_window.blit(mess, [cls.window.width / 6, cls.window.height / 4])
         cls.window.update()
+
+
+class Score:
+    pygame.init()
+    window = Window()
+    score_font = pygame.font.SysFont("comicsansms", 20)
+
+    @classmethod
+    def score(cls, score):
+        value = cls.score_font.render("Your Score: " + str(score), True, (255, 255, 102))
+        cls.window.main_window.blit(value, [0, 0])

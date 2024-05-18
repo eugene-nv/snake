@@ -1,7 +1,7 @@
 import pygame
 
 from control import Control
-from gui import Window, Message
+from gui import Window, Message, Score
 from snake import Snake
 from food import Food
 
@@ -28,6 +28,7 @@ def game_loop():
 
         food.render()
         snake.render()
+        Score.score(snake.length - 1)
 
         window.update()
 
