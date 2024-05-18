@@ -1,9 +1,7 @@
-import random
-
 import pygame
 
 from control import Control
-from gui import Window
+from gui import Window, Message
 from snake import Snake
 from food import Food
 
@@ -12,24 +10,31 @@ pygame.init()
 window = Window()
 snake = Snake()
 food = Food()
-control = Control(snake)
-
+control = Control(snake, food, window)
 
 '''Главный цикл игры'''
 
-while not control.game_over:
-    control.control(snake)
-    control.is_alive(window, snake)
 
-    window.background_fill()
+def game_loop():
+    while not control.game_closed:
 
-    food.render()
-    snake.render()
+        while control.game_over:
+            control.game_over_menu()
 
-    window.update()
+        control.control(snake)
+        control.is_alive(window, snake)
 
-    snake.eat_food(food)
+        window.background_fill()
+
+        food.render()
+        snake.render()
+
+        window.update()
+
+        snake.eat_food(food)
+
+    pygame.quit()
+    quit()
 
 
-pygame.quit()
-quit()
+game_loop()

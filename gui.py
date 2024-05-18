@@ -19,3 +19,15 @@ class Window:
     def update():
         pygame.time.Clock().tick(20)
         return pygame.display.update()
+
+
+class Message:
+    pygame.init()
+    window = Window()
+    font_style = pygame.font.SysFont('Calibri', 20)
+
+    @classmethod
+    def message(cls, text):
+        mess = cls.font_style.render(text, True, (213, 161, 142))
+        cls.window.main_window.blit(mess, [cls.window.width / 6, cls.window.height / 4])
+        cls.window.update()
