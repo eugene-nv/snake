@@ -1,16 +1,16 @@
 import pygame
 
-from control import Control
-from gui import Window, Message, Score
-from snake import Snake
-from food import Food
+from system.control import Control
+from system.gui import Window, Score
+from system.snake import Snake
+from system.food import Food
 
 pygame.init()
 
 window = Window()
 snake = Snake()
 food = Food()
-control = Control(snake, food, window)
+control = Control(snake, food)
 
 '''Главный цикл игры'''
 
@@ -22,7 +22,7 @@ def game_loop():
             control.game_over_menu()
 
         control.control(snake)
-        control.is_alive(window, snake)
+        control.is_alive(snake)
 
         window.background_fill()
 

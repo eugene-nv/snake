@@ -1,18 +1,16 @@
-import pygame
-
-from gui import Window
+import settings
+from components.components import Block, Color, Coordinate, Render, DisplaySize
 
 
 class Snake:
 
     def __init__(self):
-        self.window = Window()
-        self.block = 10
-        self.color = (58, 79, 65)
-        self.x = self.window.width / 2
-        self.y = self.window.height / 2
-        self.change_x = 0
-        self.change_y = 0
+        self.block = Block.size
+        self.color = Color(settings.SNAKE_COLOR).color
+        self.x = Coordinate('center', DisplaySize.width).coordinate
+        self.y = Coordinate('center', DisplaySize.height).coordinate
+        self.shift_x = 0
+        self.shift_y = 0
         self.list = []
         self.length = 1
         self.head = []
@@ -26,11 +24,9 @@ class Snake:
             del self.list[0]
 
         for i in self.list:
-            pygame.draw.rect(self.window.main_window, self.color,
-                                [i[0], i[1], self.block, self.block])
+            Render.render(self.color, i[0], i[1])
 
     def eat_food(self, food):
         if self.x == food.x and self.y == food.y:
             food.update()
-            print("Yummy!!")
             self.length += 1

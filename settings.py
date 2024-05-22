@@ -1,0 +1,15 @@
+BLOCK_SIZE = 10
+
+SNAKE_COLOR = (58, 79, 65)
+FOOD_COLOR = (185, 49, 79)
+BACKGROUND_COLOR = (225, 222, 227)
+
+WIDTH = 800
+HEIGHT = 600
+
+WINDOW_NAME = 'Snake'
+WINDOW_ICON = 'media/icon.png'
+
+SNAKE_SPEED = 20
+
+FONT = 'comicsansms'

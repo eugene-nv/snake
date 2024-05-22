@@ -2,8 +2,8 @@ import unittest
 
 import pygame
 
-from gui import Window
-from snake import Snake
+from system.gui import Window
+from system.snake import Snake
 
 
 class WindowTestCase(unittest.TestCase):
@@ -21,7 +21,7 @@ class WindowTestCase(unittest.TestCase):
 class SnakeTestCase(unittest.TestCase):
     def setUp(self):
         self.window = Window()
-        self.snake = Snake(self.window)
+        self.snake = Snake()
 
     def test_snake(self):
         self.assertEqual(self.snake.block, 10)
@@ -32,7 +32,6 @@ class SnakeTestCase(unittest.TestCase):
         self.assertEqual(self.snake.change_y, 0)
 
         self.assertEqual(isinstance(self.snake.render(), pygame.rect.Rect), True)
-
 
 
 if __name__ == '__main__':
