@@ -56,3 +56,21 @@ class DisplaySize:
 @dataclass
 class Font:
     font: str = settings.FONT
+
+
+@dataclass
+class Score:
+    score: int
+
+
+@dataclass
+class Speed:
+    speed: int = settings.SNAKE_SPEED
+
+    @classmethod
+    def add_speed(cls):
+        cls.speed += 1
+
+    @classmethod
+    def reset(cls):
+        cls.speed = settings.SNAKE_SPEED

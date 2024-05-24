@@ -1,9 +1,7 @@
-import random
-
 import pygame
 
 import settings
-from components.components import Block, DisplaySize, Coordinate
+from components.components import Block, DisplaySize, Coordinate, Speed
 from system.gui import Message
 
 
@@ -12,7 +10,7 @@ class Control:
         self.game_closed = False
         self.game_over = False
         self.snake = snake
-        self.closed_border = True
+        self.closed_border = settings.CLOSED_BORDERS
         self.food = food
 
     def control(self, snake):
@@ -65,6 +63,7 @@ class Control:
         self.snake.list = []
         self.snake.length = 1
         self.snake.head = []
+        self.snake.speed = Speed.reset()
         self.food.x = Coordinate(creation='random', axis=DisplaySize.width).coordinate
         self.food.y = Coordinate(creation='random', axis=DisplaySize.height).coordinate
 
@@ -73,7 +72,7 @@ class Control:
         self.game_over = False
 
     def game_over_menu(self):
-        Message.message('You loose! Press "ESCAPE" for quit or "SPACE" for play again.')
+        Message.endgame_message()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:

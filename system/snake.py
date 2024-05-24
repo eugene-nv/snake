@@ -1,5 +1,5 @@
 import settings
-from components.components import Block, Color, Coordinate, Render, DisplaySize
+from components.components import Block, Color, Coordinate, Render, DisplaySize, Speed
 
 
 class Snake:
@@ -14,12 +14,14 @@ class Snake:
         self.list = []
         self.length = 1
         self.head = []
+        self.speed = Speed.speed
 
     def render(self):
         self.head = []
         self.head.append(self.x)
         self.head.append(self.y)
         self.list.append(self.head)
+
         if len(self.list) > self.length:
             del self.list[0]
 
@@ -30,3 +32,4 @@ class Snake:
         if self.x == food.x and self.y == food.y:
             food.update()
             self.length += 1
+            Speed.add_speed()

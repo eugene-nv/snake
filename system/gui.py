@@ -1,7 +1,7 @@
 import pygame
 
 import settings
-from components.components import MainWindow, DisplaySize, Font
+from components.components import MainWindow, DisplaySize, Font, Score, Speed
 
 
 class Window:
@@ -18,7 +18,7 @@ class Window:
 
     @staticmethod
     def update():
-        pygame.time.Clock().tick(settings.SNAKE_SPEED)
+        pygame.time.Clock().tick(Speed.speed)
         return pygame.display.update()
 
 
@@ -28,18 +28,30 @@ class Message:
     font_style = pygame.font.SysFont(Font.font, 20)
 
     @classmethod
-    def message(cls, text):
-        mess = cls.font_style.render(text, True, (213, 161, 142))
+    def endgame_message(cls):
+        mess = cls.font_style.render('You loose! Press "ESCAPE" for quit or "SPACE" for play again.', True,
+                                     settings.MESSAGE_COLOR)
         MainWindow.window.blit(mess, [DisplaySize.width / 6, DisplaySize.height / 4])
         cls.window.update()
 
-
-class Score:
-    pygame.init()
-    window = Window()
-    score_font = pygame.font.SysFont(Font.font, 20)
+    @classmethod
+    def score_message(cls, snake_len):
+        score = Score(snake_len - 1)
+        value = cls.font_style.render("Your score: " + str(score.score), True, settings.MESSAGE_COLOR)
+        MainWindow.window.blit(value, [10, 10])
 
     @classmethod
-    def score(cls, score):
-        value = cls.score_font.render("Your Score: " + str(score), True, (255, 255, 102))
-        MainWindow.window.blit(value, [0, 0])
+    def speed_message(cls):
+        value = cls.font_style.render("Your speed: " + str(Speed.speed - settings.SNAKE_SPEED), True,
+                                      settings.MESSAGE_COLOR)
+        MainWindow.window.blit(value, [10, 40])
+
+# class Score:
+#     pygame.init()
+#     window = Window()
+#     score_font = pygame.font.SysFont(Font.font, 20)
+#
+#     @classmethod
+#     def score(cls, score):
+#         value = cls.score_font.render("Your Score: " + str(score), True, settings.MESSAGE_COLOR)
+#         MainWindow.window.blit(value, [0, 0])
