@@ -3,7 +3,7 @@ import unittest
 import pygame
 
 import settings
-from components.components import Block, Color, Coordinate, DisplaySize, MainWindow, Render, Font, Score, Speed
+from components.components import Block, Color, Coordinate, DisplaySize, MainWindow, Font, Score, Speed
 from system.snake import Snake
 
 

@@ -1,4 +1,3 @@
-import settings
 from components.components import Color, Coordinate, Render, DisplaySize
 
 

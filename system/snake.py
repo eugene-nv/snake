@@ -1,4 +1,3 @@
-import settings
 from components.components import Block, Color, Coordinate, Render, DisplaySize, Speed
 
 

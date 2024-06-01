@@ -1,3 +1,5 @@
+import os
+
 BLOCK_SIZE = 10
 
 SNAKE_COLOR = (58, 79, 65)
@@ -9,7 +11,11 @@ WIDTH = 800
 HEIGHT = 600
 
 WINDOW_NAME = 'Snake'
-WINDOW_ICON = 'media/icon.png'
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WINDOW_ICON = os.path.join(BASE_DIR, 'snake/media/icon.png')
+
+print(f'WINDOW_ICON: {WINDOW_ICON}')
 
 SNAKE_SPEED = 10
 
