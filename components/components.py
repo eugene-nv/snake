@@ -13,7 +13,20 @@ class Block:
 
 @dataclass
 class Color:
+    obj: str = None
     color: tuple = None
+
+    def __post_init__(self):
+        if self.obj == 'snake':
+            self.color = settings.SNAKE_COLOR
+        elif self.obj == 'food':
+            self.color = settings.FOOD_COLOR
+        elif self.obj == 'background':
+            self.color = settings.BACKGROUND_COLOR
+        elif self.obj == 'message':
+            self.color = settings.MESSAGE_COLOR
+        else:
+            self.color = (255, 255, 255)
 
 
 @dataclass
@@ -67,10 +80,11 @@ class Score:
 class Speed:
     speed: int = settings.SNAKE_SPEED
 
-    @classmethod
-    def add_speed(cls):
-        cls.speed += 1
+    @staticmethod
+    def add_speed(speed):
+        speed += 1
+        return speed
 
-    @classmethod
-    def reset(cls):
-        cls.speed = settings.SNAKE_SPEED
+    @staticmethod
+    def reset():
+        return settings.SNAKE_SPEED

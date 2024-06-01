@@ -5,7 +5,7 @@ from components.components import Color, Coordinate, Render, DisplaySize
 class Food:
 
     def __init__(self):
-        self.color = Color(settings.FOOD_COLOR).color
+        self.color = Color('food').color
         self.x = Coordinate('random', DisplaySize.width).coordinate
         self.y = Coordinate('random', DisplaySize.height).coordinate
 

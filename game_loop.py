@@ -29,9 +29,9 @@ def game_loop():
         food.render()
         snake.render()
         Message.score_message(snake.length)
-        Message.speed_message()
+        Message.speed_message(snake.speed)
 
-        window.update()
+        window.update(snake.speed)
 
         snake.eat_food(food)
 

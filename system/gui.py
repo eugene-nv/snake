@@ -1,7 +1,7 @@
 import pygame
 
 import settings
-from components.components import MainWindow, DisplaySize, Font, Score, Speed
+from components.components import MainWindow, DisplaySize, Font, Score, Color
 
 
 class Window:
@@ -14,11 +14,11 @@ class Window:
 
     @staticmethod
     def background_fill():
-        return MainWindow.window.fill(settings.BACKGROUND_COLOR)
+        return MainWindow.window.fill(Color('background').color)
 
     @staticmethod
-    def update():
-        pygame.time.Clock().tick(Speed.speed)
+    def update(snake_speed):
+        pygame.time.Clock().tick(snake_speed)
         return pygame.display.update()
 
 
@@ -28,30 +28,21 @@ class Message:
     font_style = pygame.font.SysFont(Font.font, 20)
 
     @classmethod
-    def endgame_message(cls):
+    def endgame_message(cls, snake_speed):
         mess = cls.font_style.render('You loose! Press "ESCAPE" for quit or "SPACE" for play again.', True,
-                                     settings.MESSAGE_COLOR)
+                                     Color('message').color)
         MainWindow.window.blit(mess, [DisplaySize.width / 6, DisplaySize.height / 4])
-        cls.window.update()
+        cls.window.update(snake_speed)
 
     @classmethod
     def score_message(cls, snake_len):
         score = Score(snake_len - 1)
-        value = cls.font_style.render("Your score: " + str(score.score), True, settings.MESSAGE_COLOR)
+        value = cls.font_style.render("Score: " + str(score.score), True, Color('message').color)
         MainWindow.window.blit(value, [10, 10])
 
     @classmethod
-    def speed_message(cls):
-        value = cls.font_style.render("Your speed: " + str(Speed.speed - settings.SNAKE_SPEED), True,
-                                      settings.MESSAGE_COLOR)
+    def speed_message(cls, snake_speed):
+        value = cls.font_style.render("Speed: " + str(snake_speed - settings.SNAKE_SPEED), True,
+                                      Color('message').color)
         MainWindow.window.blit(value, [10, 40])
 
-# class Score:
-#     pygame.init()
-#     window = Window()
-#     score_font = pygame.font.SysFont(Font.font, 20)
-#
-#     @classmethod
-#     def score(cls, score):
-#         value = cls.score_font.render("Your Score: " + str(score), True, settings.MESSAGE_COLOR)
-#         MainWindow.window.blit(value, [0, 0])

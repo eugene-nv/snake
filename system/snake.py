@@ -6,7 +6,7 @@ class Snake:
 
     def __init__(self):
         self.block = Block.size
-        self.color = Color(settings.SNAKE_COLOR).color
+        self.color = Color('snake').color
         self.x = Coordinate('center', DisplaySize.width).coordinate
         self.y = Coordinate('center', DisplaySize.height).coordinate
         self.shift_x = 0
@@ -32,4 +32,5 @@ class Snake:
         if self.x == food.x and self.y == food.y:
             food.update()
             self.length += 1
-            Speed.add_speed()
+            self.speed = Speed.add_speed(self.speed)
+

@@ -9,8 +9,8 @@ class Control:
     def __init__(self, snake, food):
         self.game_closed = False
         self.game_over = False
-        self.snake = snake
         self.closed_border = settings.CLOSED_BORDERS
+        self.snake = snake
         self.food = food
 
     def control(self, snake):
@@ -72,7 +72,7 @@ class Control:
         self.game_over = False
 
     def game_over_menu(self):
-        Message.endgame_message()
+        Message.endgame_message(20)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
