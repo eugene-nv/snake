@@ -15,8 +15,6 @@ WINDOW_NAME = 'Snake'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WINDOW_ICON = os.path.join(BASE_DIR, 'snake/media/icon.png')
 
-print(f'WINDOW_ICON: {WINDOW_ICON}')
-
 SNAKE_SPEED = 10
 
 FONT = 'comicsansms'

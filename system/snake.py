@@ -16,10 +16,15 @@ class Snake:
         self.speed = Speed.speed
 
     def render(self):
+
+        '''Отрисовка змейки'''
+
         self.head = []
         self.head.append(self.x)
         self.head.append(self.y)
         self.list.append(self.head)
+
+        '''Удаление последнего блока змейки для имитации движения'''
 
         if len(self.list) > self.length:
             del self.list[0]
@@ -28,8 +33,10 @@ class Snake:
             Render.render(self.color, i[0], i[1])
 
     def eat_food(self, food):
+
+        '''Змейка ест еду'''
+
         if self.x == food.x and self.y == food.y:
             food.update()
             self.length += 1
             self.speed = Speed.add_speed(self.speed)
-
